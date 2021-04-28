@@ -832,4 +832,285 @@ colors = 'blue pink yellow orange'
 p colors.split(' ').include?(' yellow ')
 p colors.split(' ').include?('blue')
 p colors.include?('purple')
+
+
+#ARRAYS
+
+pets = ['cat', 'dog', 'fish', 'lizard']
+my_pets = [pets[2], pets[3]]
+puts "I have a pet #{my_pets[0]} and a pet #{my_pets[1]}!"
+
+
+pets = ['cat', 'dog', 'fish', 'lizard']
+my_pets = pets[2..3]
+my_pets.delete('lizard')
+puts "I have a pet #{my_pets[0]}!"
+
+
+
+colors = ['red', 'yellow', 'purple', 'green']
+colors.each do |color|
+  puts "I'm the color #{color}!"
+end
+
+numbers = [1, 2, 3, 4, 5]
+
+doubled_numbers = numbers.map{|num| num *2}
+puts doubled_numbers
+
+
+numbers = [5, 9, 21, 26, 39]
+divisible_by_three = numbers.select{|num| num if (num % 3 == 0)}
+puts divisible_by_three
+
+
+name_ages = [['Dave', 7], ['Miranda', 3], ['Jason', 11]]
+name_ages.map{|pair| puts "#{pair[0]} is #{pair[1]} years old."}
+
+
+favorites = [['Dave', 7], ['Miranda', 3], ['Jason', 11]]
+puts favorites.flatten!
+puts favorites
+
+
+array1 = [1, 5, 9]
+array2 = [1, 9, 5]
+puts array1 == array2
+
+#HASHES
+
+
+car = {
+  type: 'sedan',
+  color: 'blue', 
+  mileage: 80000
+}
+
+car[:year] = 2003
+car. delete(:mileage)
+puts car
+
+puts car[:color]
+
+
+numbers = {
+  high:   100,
+  medium: 50,
+  low:    10
+}
+
+numbers.each do |key, value|
+  puts "#{key}: #{value}"
+end
+
+half_numbers = numbers.map{ |key, value| value / 2}
+puts half_numbers
+
+
+numbers = {
+  high:   100,
+  medium: 50,
+  low:    10
+}
+
+low_numbers = numbers.select!{|key, value| value.to_i < 25}
+p low_numbers
+p numbers
+
+
+vehicles = {
+  {
+    type_v: 'car',
+    type:   'sedan',
+    color:  'blue',
+    year:   2003
+    }
+  {
+    type_v: 'truck',
+    type:   'pickup',
+    color:  'red',
+    year:   1998
+  }
+}
+
+{
+  car:   { type: 'sedan', color: 'blue', year: 2003 },
+  truck: { type: 'pickup', color: 'red', year: 1998 }
+}
+
+car = {key1:
+{
+  type:  'sedan',
+  color: 'blue',
+  year:  2003}
+  
+},
+
+key1:
+{
+  type:  'sedan',
+  color: 'blue',
+  year:  2003}
+  
+}
+}
+
+#DEBUGGING
+
+def find_first_nonzero_among(numbers)
+  numbers.each do |n|
+    return n if n.nonzero?
+  end
+end
+
+# Examples
+
+find_first_nonzero_among([0, 0, 1, 0, 2, 0])
+find_first_nonzero_among([1])
+
+
+def predict_weather
+  sunshine = [true, false].sample
+
+  if sunshine
+    puts "Today's weather will be sunny!"
+  else
+    puts "Today's weather will be cloudy!"
+  end
+end
+predict_weather
+
+
+def multiply_by_five(n)
+  n * 5
+end
+
+puts "Hello! Which number would you like to multiply by 5?"
+number = gets.chomp.to_i
+
+puts "The result is #{multiply_by_five(number)}!"
+
+
+pets = { cat: 'fluffy', dog: ['sparky', 'fido'], fish: 'oscar' }
+
+pets[:dog] = pets[:dog].push('bowser')
+
+p pets #=> {:cat=>"fluffy", :dog=>"bowser", :fish=>"oscar"}
+
+
+numbers = [5, 2, 9, 6, 3, 1, 8]
+
+even_numbers = numbers.select{|num| num.even?}
+
+p even_numbers # expected output: [2, 6, 8]
+
+
+def get_quote(person)
+  if person == 'Yoda'
+   return 'Do. Or do not. There is no try.'
+  end
+
+  if person == 'Confucius'
+    return 'I hear and I forget. I see and I remember. I do and I understand.'
+  end
+
+  if person == 'Einstein'
+    return 'Do not worry about your difficulties in Mathematics. I can assure you mine are still greater.'
+  end
+end
+
+puts 'Confucius says:'
+puts get_quote('Confucius') 
+# Financially, you started the year with a clean slate.
+
+balance = 0
+
+# Here's what you earned and spent during the first three months.
+
+january = {
+  income: [ 1200, 75 ],
+  expenses: [ 650, 140, 33.2, 100, 26.9, 78 ]
+}
+
+february = {
+  income: [ 1200 ],
+  expenses: [ 650, 140, 320, 46.7, 122.5 ]
+}
+
+march = {
+  income: [ 1200, 10, 75 ],
+  expenses: [ 650, 140, 350, 12, 59.9, 2.5 ]
+}
+
+# Let's see how much you've got now...
+
+def calculate_balance(month)
+  plus  = month[:income].reduce(&:+)
+  minus = month[:expenses].reduce(&:+)
+
+  plus - minus
+end
+
+[january, february, march].each do |month|
+  balance += calculate_balance(month)
+end
+
+puts balance
+
+
+colors = ['red', 'yellow', 'purple', 'green', 'dark blue', 'turquoise', 'silver', 'black']
+things = ['pen', 'mouse pad', 'coffee mug', 'sofa', 'surf board', 'training mat', 'notebook']
+
+colors.shuffle!
+things.shuffle!
+
+i = 0
+loop do
+  break if i > colors.length
+
+  if i == 0
+    puts 'I have a ' + colors[(i/colors.length).to_i] + ' ' + things[i] + '.'
+  else
+    puts 'And a ' + colors[i] + ' ' + things[i] + '.'
+  end
+
+  i += 1
+end
+
+
+def digit_product(str_num)
+  digits = str_num.chars.map { |n| n.to_i }
+  product = 1
+
+  digits.each do |digit|
+    product *= digit
+  end
+
+  product
+end
+
+
+p digit_product('12345')
+# expected return value: 120
+# actual return value: 0
 =end
+# Each player starts with the same basic stats.
+
+player = { strength: 10, dexterity: 10, charisma: 10, stamina: 10 }
+
+# Then the player picks a character class and gets an upgrade accordingly.
+
+character_classes = {
+  warrior: { strength:  20 },
+  thief:   { dexterity: 20 },
+  scout:   { stamina:   20 },
+  mage:    { charisma:  20 }
+}
+
+puts 'Please type your class (warrior, thief, scout, mage):'
+input = gets.chomp.downcase
+
+player.merge!(character_classes[input.to_sym])
+
+puts 'Your character stats:'
+puts player
