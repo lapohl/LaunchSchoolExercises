@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>View / Edit Tasks</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style_edit.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  </head>
+  <body id='body'>
+    <div class="button-outer-wrapper">
+      <div class="button-inner-wrapper">
+        <div class="button-wrapper">
+          <a class="button" href="index.html">Home</a>
+        </div>
+        <div class="button-wrapper">
+          <a class="button" href="add_task.html">Add Job</a>
+        </div>
+      </div>
+    </div>
+    <table>
+      <tr>
+        <th>Job ID</th>
+        <th>Job</th>
+        <th>Hole</th>
+        <th>Area</th>
+        <th>Frequency [days]</th>
+        <th>Next Due Date</th>
+      </tr>
+      {%  for obj in tasks  %}
+      <tr>
+        <td>{{ obj.id }}</td>
+        <td>{{ obj.task }}</td>
+        <td>{{ obj.hole }}</td>
+        <td>{{ obj.area }}</td>
+        <td>
+          <div class="dropdown">
+            <button class="dropbtn">{{ obj.frequency_days }}</button>
+          </div>
+        </td>
+        <td>
+          <div class="dropdown">
+            <button class="dropbtn">{{ obj.next_due_date }}</button>
+          </div>
+        </td>
+      </tr>
+      {%  endfor  %}
+    </table>
+  </body>
+</html>
