@@ -37,7 +37,7 @@
 
 .button {
   text-decoration: none;
-  color: 	white ;
+  color: 	white;
 }
 
 table, th, td, tr {
@@ -61,6 +61,7 @@ td {
   background-color: #046413;
   color: white;
   font-size: 1rem;
+  text-decoration: none;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -68,6 +69,7 @@ td {
   position: relative;
   display: inline-block;
   background-color: #ddd;
+  text-decoration: none;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -78,6 +80,7 @@ td {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   background-color: #ddd;
+  text-decoration: none;
 }
 
 /* Links inside the dropdown */
@@ -103,7 +106,74 @@ td {
     color: black;
   }
 
+#delete {
+  font-size: 3rem;
+}
+
+#delete-btn {
+  background-color:  red;
+  color: white;
+}
 
 
 
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 10%;
+  top: 7%;
+  width: 60%; /* Full width */
+  height: 60%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
 
+  background-color: #00a600;
+  border:  	#a2d10c 3px solid;
+  padding:  1rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+}
+
+.modal-content {
+  width: 95%; /* Could be more or less, depending on screen size */
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background-color: #00a600;
+  color: white;
+  font: inherit;
+}
+
+button:hover {
+  cursor: pointer;
+}
+/* The Close Button */
+.close {
+  color: #a2d10c;
+  margin-left: 92%;
+  margin-top: 2%;
+  float: right, top;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+.close:hover,
+.close:focus {
+  color: #046413;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.add-task-cell {
+  text-align: center;
+  width: 20%;
+  padding: 1rem;
+}
+
+#add-task-table {
+  margin-top: 5%;
+}

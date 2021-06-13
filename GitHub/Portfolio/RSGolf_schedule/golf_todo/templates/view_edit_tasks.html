@@ -12,12 +12,45 @@
         <div class="button-wrapper">
           <a class="button" href="index.html">Home</a>
         </div>
-        <div class="button-wrapper">
-          <a class="button" href="add_task.html">Add Job</a>
-        </div>
+          <div class="button-wrapper">
+            <button id="add_task_modal_btn">Add Job</button>
+          </div>
       </div>
     </div>
-    <table>
+    <div id="add_task_modal" class="modal">
+      <div class="modal-content">
+        <span class="close">Cancel</span>
+        <table id="add-task-table">
+          <tr class="add-task-row">
+            <td class="add-task-cell">Job Type</td>
+            <td class="add-task-cell">
+              <div class="button-group-wrapper">
+                {% for job in task_types %}
+                  <button class="btn-grp-button">{{ job }}</button>
+                {% endfor %}
+              </div>
+            </td>
+          </tr>
+          <tr class="add-task-row">
+            <td class="add-task-cell">Area</td>
+            <td class="add-task-cell">
+              <div class="button-group-wrapper">
+                {% for area in areas %}
+                  <button>{{ area }}</button>
+                {% endfor %}
+              </div>
+            </td>
+          </tr>
+          <tr class="add-task-row">
+            <td class="add-task-cell">Hole</td>
+          </tr>
+          <tr class="add-task-row">
+            <td class="add-task-cell">Frequency</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <table> 
       <tr>
         <th>Job ID</th>
         <th>Job</th>
@@ -26,6 +59,7 @@
         <th>Frequency [days]</th>
         <th>Next Due Date</th>
       </tr>
+      <tr></tr>
       {%  for obj in tasks  %}
       <tr>
         <td>{{ obj.id }}</td>
@@ -35,15 +69,32 @@
         <td>
           <div class="dropdown">
             <button class="dropbtn">{{ obj.frequency_days }}</button>
+            <div class="dropdown-content">
+              <a class="dropdown-content-element" href="#">Change Value</a>
+            </div>
           </div>
         </td>
         <td>
           <div class="dropdown">
             <button class="dropbtn">{{ obj.next_due_date }}</button>
+            <div class="dropdown-content">
+              <a class="dropdown-content-element" href="#">Change Value</a>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="dropdown">
+            <button class="dropbtn">-</button>
+            <div class="dropdown-content"> <!-- bring out of div class-->
+              <form action="{% url 'delete_task' obj.id %}" method="post">
+                <input type="submit" value="Delete Job">
+              </form>
+            </div>
           </div>
         </td>
       </tr>
       {%  endfor  %}
     </table>
+    <script src="{% static 'app_edit.js' %}"></script>
   </body>
 </html>
